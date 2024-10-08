@@ -1,0 +1,5 @@
+- Test all the conversion specifiers (CS)!
+- For every CS, try all limit examples.
+- For every conversion specifier and example, try all combinations of flags.
+- Try cases where it should break. Maybe test without -W flags
+- Test the outputs of the printf function!.
