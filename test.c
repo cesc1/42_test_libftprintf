@@ -10,60 +10,51 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_C
-# define TEST_C
-
 #include "libftprintf.h"
-#include <stdlib.h>
+#include <stdio.h>
 #include <stdarg.h>
 
-int	print(int (*f)(const char *, va_list), const char *str, ...);
-void	print_test(char user, const char *str, ...);
+#ifndef FUN
+# define FUN ft_printf
 #endif
 
-int	main(int argc, char **argv)
+int	main()
 {
-	char	user;
 	int	*ptr = (int *)0x7ffe5f37ba94;
 
-	if (argc != 2)
-		return (1);
-	user = *(argv[1]);
-	if (!(user == '0' || user == '1'|| user == '2'))
-		return (1);
-
 	// BASIC TESTS
-	print_test(user, "hola test 1");
-	print_test(user, NULL);
-	print_test(user, "àéí¿¡!");
-	print_test(user, "%?--m");
+	FUN("hola test 1\n");
+	FUN(NULL);
+	FUN("\n");
+	FUN("àéí¿¡!\n");
+	FUN("%?--m\n");
 
 	// %c
-	printf("===%%c===");
-	print_test(user, ".%c.", 'a');
-	print_test(user, ".%c%c.%c%c.", 'a', 'b', 'c', 'd');
+	FUN("===%%c===\n");
+	FUN(".%c.\n", 'a');
+	FUN(".%c%c.%c%c.\n", 'a', 'b', 'c', 'd');
 
 	// %s
-	printf("===%%s===");
-	print_test(user, ".%s.", "hola");
-	print_test(user, ".%s %s %s.", "hola", "com", "estas?");
+	FUN("===%%s===\n");
+	FUN(".%s.\n", "hola");
+	FUN(".%s %s %s.\n", "hola", "com", "estas?");
 
 	// %d %i
-	printf("===%%d===");
-	print_test(user, ".%d.", 5);
-	print_test(user, ".%d%i.%d%i.", -5, 5, -2147483648, 2147483647);
+	FUN("===%%d===\n");
+	FUN(".%d.\n", 5);
+	FUN(".%d%i.%d%i.\n", -5, 5, -2147483648, 2147483647);
 
 	// %u
-	printf("===%%u===");
-	print_test(user, ".%u.", 5);
-	print_test(user, ".%u%u.%u%u.", -5, 5, '0', 4294967295);
+	FUN("===%%u===\n");
+	FUN(".%u.\n", 5);
+	FUN(".%u%u.%u%u.\n", -5, 5, '0', 4294967295);
 
 	// %x %X
-	printf("===%%x===");
-	print_test(user, ".%x.", 13);
-	print_test(user, ".%x%X.%x%X.", 13, 13, -4, 4294967295);
+	FUN("===%%x===\n");
+	FUN(".%x.\n", 13);
+	FUN(".%x%X.%x%X.\n", 13, 13, -4, 4294967295);
 
 	// Can't test %p on diferent files, or the files allways
-	print_test(user, ".%p.", ptr);
+	FUN(".%p.\n", ptr);
 	return (0);
 }
