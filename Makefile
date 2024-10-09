@@ -21,10 +21,12 @@ all: $(NAME_USER) $(NAME_CHECKER)
 	diff res_user.txt res_checker.txt
 
 
-$(NAME_USER): $(USER) Makefile
+$(NAME_USER): $(USER) Makefile $(LIB)
 	$(CC) -Wall -Werror -Wextra $(CFLAGS) -o $@ $(USER) $(LIB) $(LIBFT)
 
-$(NAME_CHECKER): $(USER) Makefile
+$(NAME_CHECKER): $(USER) Makefile $(LIB)
 	$(CC) $(CFLAGS) -o $@ $(CHECKER)
 
-.PHONY: all
+clean:
+	rm -f $(NAME_USER) $(NAME_CHECKER) res_user.txt res_checker.txt
+.PHONY: all clean
