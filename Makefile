@@ -4,14 +4,12 @@ OUT0 = outputs/a.out
 OUT1 = outputs/b.out
 
 PATH_LIB = $(shell cd .. && pwd)
-PATH_LIBFT = $(PATH_LIB)/libft
 LIB = $(PATH_LIB)/libftprintf.a
-LIBFT = $(PATH_LIBFT)/libft.a
 
 SRC = test.c
 
 CC = cc
-CFLAGS = -g -I$(PATH_LIB) -I$(PATH_LIBFT)
+CFLAGS = -g -I$(PATH_LIB)
 
 #################
 
@@ -24,6 +22,6 @@ $(OUT0): $(SRC) Makefile $(LIB)
 	$(CC) -Wall -Werror -Wextra $(CFLAGS) -D FUN=ft_printf -o $@ $(SRC) $(LIB) $(LIBFT)
 
 $(OUT1): $(SRC) Makefile $(LIB)
-	$(CC) -w $(CFLAGS) -D FUN=printf -o $@ $(SRC) $(LIB) $(LIBFT)
+	$(CC) -w $(CFLAGS) -D FUN=printf -o $@ $(SRC) $(LIB)
 
 .PHONY: all
