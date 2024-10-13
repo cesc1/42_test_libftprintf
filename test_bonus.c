@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   test_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: faguirre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -22,18 +22,10 @@ int	main()
 {
 	int	*ptr = (int *)0x7ffe5f37ba94;
 
-	// BASIC TESTS
-	FUN("(%d)\n", FUN("hola test 1"));
-	FUN("(%d)\n", FUN(NULL));
-	FUN("(%d)\n", FUN("\n"));
-	FUN("(%d)\n", FUN("àéí¿¡!"));
-	FUN("(%d)\n", FUN("%?--m"));
-
+	FUN("\nTESTS WITH FLAGS [#width-0 +.]\n");
+	FUN("--------------------------------\n");
 	// %c
 	FUN("\n===%%c===\n");
-	FUN("(%d)\n", FUN(".%c.", 'a'));
-	FUN("(%d)\n", FUN(".%c%c.%c%c.", 'a', 'b', 'c', 'd'));
-	FUN("(%d)\n", FUN(".%c.", 200));
 	// %individual flags
 	FUN("(%d)\n", FUN(".%#c.", 'a'));
 	FUN("(%d)\n", FUN(".% c.", 'a'));
@@ -53,8 +45,6 @@ int	main()
 
 	// %s
 	FUN("\n===%%s===\n");
-	FUN("(%d)\n", FUN(".%s.", "hola"));
-	FUN("(%d)\n", FUN(".%s %s %s.", "hola", "com", "estas?"));
 	// %individual flags
 	FUN("(%d)\n", FUN(".%#s.", "hola"));
 	FUN("(%d)\n", FUN(".% s.", "hola"));
@@ -78,8 +68,6 @@ int	main()
 
 	// %d %i
 	FUN("\n===%%d===\n");
-	FUN("(%d)\n", FUN(".%d.", 5));
-	FUN("(%d)\n", FUN(".%d%i.%d%i.", -5, 5, -2147483648, 2147483647));
 	// %individual flags
 	FUN("(%d)\n", FUN(".%#d.", 5));
 	FUN("(%d)\n", FUN(".% i.", 5));
@@ -106,8 +94,6 @@ int	main()
 
 	// %u
 	FUN("\n===%%u===\n");
-	FUN("(%d)\n", FUN(".%u.", 5));
-	FUN("(%d)\n", FUN(".%u%u.%u%u.", -5, 5, '0', 4294967295));
 	// %individual flags
 	FUN("(%d)\n", FUN(".%#u.", 5));
 	FUN("(%d)\n", FUN(".% u.", 5));
@@ -127,8 +113,6 @@ int	main()
 
 	// %x %X
 	FUN("\n===%%x===\n");
-	FUN("(%d)\n", FUN(".%x.", 13));
-	FUN("(%d)\n", FUN(".%x%X.%x%X.", 13, 13, -4, 4294967295));
 	// %individual flags
 	FUN("(%d)\n", FUN(".%#x.", 13));
 	FUN("(%d)\n", FUN(".% X.", 13));
@@ -151,7 +135,6 @@ int	main()
 
 	// %p
 	FUN("\n===%%p===\n");
-	FUN("(%d)\n", FUN(".%p.", ptr));
 	// %individual flags
 	FUN("(%d)\n", FUN(".%#p.", ptr));
 	FUN("(%d)\n", FUN(".% p.", ptr));
